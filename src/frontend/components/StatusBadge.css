@@ -1,0 +1,11 @@
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge--pending     { background: #fef3c7; color: #92400e; }
+.badge--in-progress { background: #dbeafe; color: #1e40af; }
+.badge--done        { background: #d1fae5; color: #065f46; }

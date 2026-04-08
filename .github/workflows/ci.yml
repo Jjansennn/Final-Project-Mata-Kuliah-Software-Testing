@@ -1,0 +1,75 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["**"]
+    tags:
+      - "release*"
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build (validate app importable)
+        run: python -c "import app"
+        env:
+          PYTHONPATH: src/backend
+
+      - name: Run tests & coverage
+        run: pytest --cov=app --cov-report=term-missing --cov-report=xml
+        env:
+          PYTHONPATH: src/backend
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage
+          path: coverage.xml
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build frontend
+        run: npm run build
+        env:
+          VITE_API_BASE_URL: http://localhost:5000
+
+      - name: Run tests
+        run: npm run test
+
+  release:
+    needs: [test-backend, test-frontend]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/release')
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create release tarball
+        run: tar -czf "../task-management-system.tar.gz" .
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ../task-management-system.tar.gz
