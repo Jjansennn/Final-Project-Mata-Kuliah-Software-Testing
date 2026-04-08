@@ -1,11 +1,11 @@
 # Task Management System
 
-[![CI Pipeline](https://github.com/Jjansennn/task-management-system/actions/workflows/ci.yml/badge.svg)](https://github.com/Jjansennn/task-management-system/actions)
-[![Coverage](https://codecov.io/gh/Jjansennn/task-management-system/branch/main/graph/badge.svg)](https://codecov.io/gh/Jjansennn/task-management-system)
+[![CI Pipeline](https://github.com/Jjansennn/Final-Project-Mata-Kuliah-Software-Testing/actions/workflows/ci.yml/badge.svg)](https://github.com/Jjansennn/task-management-system/actions)
+[![Coverage](https://codecov.io/gh/Jjansennn/Final-Project-Mata-Kuliah-Software-Testing/branch/main/graph/badge.svg)](https://codecov.io/gh/Jjansennn/task-management-system)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![React](https://img.shields.io/badge/react-19-61dafb)
 ![License](https://img.shields.io/badge/license-MIT-green)
-[![Release](https://img.shields.io/github/v/release/Jjansennn/task-management-system?include_prereleases)](https://github.com/Jjansennn/task-management-system/releases)
+[![Release](https://img.shields.io/github/v/release/Jjansennn/Final-Project-Mata-Kuliah-Software-Testing?include_prereleases)](https://github.com/Jjansennn/task-management-system/releases)
 
 
 Aplikasi web full-stack untuk mengelola task (CRUD) — monorepo dengan backend Flask dan frontend React.
