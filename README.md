@@ -1,11 +1,11 @@
 # Task Management System
 
-![CI Pipeline](https://github.com/Jjansennn/task-management-system/actions/workflows/ci.yml/badge.svg)
-![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
+[![CI Pipeline](https://github.com/Jjansennn/task-management-system/actions/workflows/ci.yml/badge.svg)](https://github.com/Jjansennn/task-management-system/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/Jjansennn/task-management-system/branch/main/graph/badge.svg)](https://codecov.io/gh/Jjansennn/task-management-system)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![React](https://img.shields.io/badge/react-19-61dafb)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Release](https://img.shields.io/github/v/release/Jjansennn/task-management-system)
+[![Release](https://img.shields.io/github/v/release/Jjansennn/task-management-system)](https://github.com/Jjansennn/task-management-system/releases)
 
 
 Aplikasi web full-stack untuk mengelola task (CRUD) — monorepo dengan backend Flask dan frontend React.

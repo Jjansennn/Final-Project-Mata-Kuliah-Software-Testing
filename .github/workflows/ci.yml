@@ -1,3 +1,4 @@
+# .github/workflows/ci.yml
 name: CI Pipeline
 
 on:
@@ -9,6 +10,7 @@ on:
     branches: ["**"]
 
 jobs:
+  # ================= Backend =================
   test-backend:
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +21,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt pytest coverage codecov
 
       - name: Build (validate app importable)
         run: python -c "import app"
@@ -31,12 +33,18 @@ jobs:
         env:
           PYTHONPATH: src/backend
 
-      - name: Upload coverage report
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}  # Optional jika repo public
+
+      - name: Upload coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: backend-coverage
           path: coverage.xml
 
+  # ================= Frontend =================
   test-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -54,9 +62,10 @@ jobs:
         env:
           VITE_API_BASE_URL: http://localhost:5000
 
-      - name: Run tests
+      - name: Run frontend tests
         run: npm run test
 
+  # ================= Release =================
   release:
     needs: [test-backend, test-frontend]
     runs-on: ubuntu-latest
